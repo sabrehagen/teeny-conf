@@ -1,5 +1,5 @@
 var fs = require('fs');
-var { get, set } = require('lodash');
+var { get, set, merge } = require('lodash');
 
 var teenyconf = function(configPath) {
 
@@ -85,6 +85,11 @@ var teenyconf = function(configPath) {
     this.set = function(key, value) {
 
         return set(_conf, key, value);
+    },
+
+    this.merge = function(config) {
+
+        return merge(_conf, config);
     },
 
     this.delete = function(key) {
