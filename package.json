@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/KeitIG/teeny-conf/issues"
   },
-  "homepage": "https://github.com/KeitIG/teeny-conf#readme"
+  "homepage": "https://github.com/KeitIG/teeny-conf#readme",
+  "dependencies": {
+    "lodash": "^4.17.4"
+  }
 }

@@ -1,4 +1,5 @@
 var fs = require('fs');
+var { get, set } = require('lodash');
 
 var teenyconf = function(configPath) {
 
@@ -73,7 +74,7 @@ var teenyconf = function(configPath) {
 
     this.get = function(key) {
 
-        return _conf[key];
+        return get(_conf, key);
     },
 
     this.getAll = function() {
@@ -83,12 +84,12 @@ var teenyconf = function(configPath) {
 
     this.set = function(key, value) {
 
-        _conf[key] = value;
+        return set(_conf, key, value);
     },
 
     this.delete = function(key) {
 
-        delete _conf[key];
+        return set(_conf, key, undefined);
     },
 
     this.save = function(minify, callback) {
