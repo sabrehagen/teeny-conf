@@ -101,21 +101,23 @@ var teenyconf = function(configPath) {
         return set(_conf, key, undefined);
     },
 
-    this.save = function(minify, callback) {
+    this.save = function(minify) {
+        return new Promise((resolve, reject) => {
 
-        minify = minify || false;
-        var self = this;
-        var output = minify ? JSON.stringify(_conf) : JSON.stringify(_conf, null, ' ');
+            minify = minify || false;
+            var self = this;
+            var output = minify ? JSON.stringify(_conf) : JSON.stringify(_conf, null, ' ');
 
-        try {
-            fs.writeFile(_metas.configPath, output, function(err) {
-                if(err) throw err;
-                if (callback) callback();
-            });
-        }
-        catch(err) {
-            console.error(err);
-        }
+            try {
+                fs.writeFile(_metas.configPath, output, function(err) {
+                    if(err) reject(err);
+                    resolve();
+                });
+            }
+            catch(err) {
+                reject(err);
+            }
+        });
     },
 
     this.saveSync = function(minify) {
