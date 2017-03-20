@@ -9,6 +9,10 @@ var teenyconf = function(configPath) {
 
     var _conf = {};
 
+    this.setConfigPath = function(configPath) {
+        _metas.configPath = configPath;
+    }
+
     this.loadOrCreate = function(defaultConfig, callback) {
 
         var self = this;
